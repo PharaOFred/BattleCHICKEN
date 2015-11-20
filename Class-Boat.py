@@ -30,10 +30,16 @@ class Boat:
     def __init__(self,lenght):
         self.lenght = lenght
     def placeboat_horizontaly(self,init_line,init_col,gridboat1):
-        for i in range(self.lenght):
-            init_tile = Tile(init_line,init_col+i,gridboat1)
-            init_tile.setvalue("boat")
+        if 11-self.lenght >= init_col:
+            for i in range(self.lenght):
+                init_tile = Tile(init_line,init_col+i,gridboat1)
+                init_tile.setvalue("boat")
+        else:
+            print("ERREUR, MAUVAIS ENDROIT POUR LA LONGUEUR DU BATEAU")
     def placeboat_verticaly(self,init_line,init_col,gridboat1):
-        for i in range(self.lenght):
-            init_tile = Tile(init_line+i,init_col,gridboat1)
-            init_tile.setvalue("boat")
+        if 11-self.lenght >= init_line:
+            for i in range(self.lenght):
+                init_tile = Tile(init_line+i,init_col,gridboat1)
+                init_tile.setvalue("boat")
+        else:
+            print("ERREUR, MAUVAIS ENDROIT POUR LA LONGUEUR DU BATEAU")
