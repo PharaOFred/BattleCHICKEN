@@ -33,50 +33,49 @@ class Tile:                             #Huuuh this class was supposed to inheri
                                                         # list of 100 elements and not 10 lists of 10 elements
         return self.gridtile[(10*(self.m-1))+(self.n-1)]# we multiply m by 10 to get the appropriate line and only add the column
                                                         # the minus 1 on both m and n is to avoid having to call
-                                                        #line 0 instead of line 1
+                                                        #line 0 instead of line 1 am a bit concerned about the uselessness of
+                                                        # __getitem__ in class Grid().
 
-
-    def setvalue(self,value):                               # Set the
+    def SetValue(self,value):                             # Set the a value in the list coordinate (m,n)
 
         self.gridtile[(10*(self.m-1))+(self.n-1)] = value
 
 
-class Boat:
+class Boat:                                 #The class to build our ships!
 
-    def __init__(self,lenght):
+    def __init__(self,lenght):              #Constructor, we set the lenght of our ships.
 
-        self.lenght = lenght
+        self.lenght = lenght                # From within a range of 2 to 5 tiles.
 
 
-    def PlaceH(self,init_line,init_col,gridboat1):
-
-        if 11-self.lenght >= init_col:
+    def PlaceH(self,init_line,init_col,gridboat1):      #This function calls on the class Tile and it's function
+                                                        # SetValue to set the ship's coordinate on the grid
+        if 11-self.lenght >= init_col:                  # horizontally.
 
             for i in range(self.lenght):
 
                 init_tile = Tile(init_line,init_col+i,gridboat1)
-                init_tile.setvalue("boat")
+                init_tile.SetValue("boat")
 
         else:
 
-            print("ERREUR, MAUVAIS ENDROIT POUR LA LONGUEUR DU BATEAU")
+            print("ERREUR, MAUVAIS ENDROIT POUR LA LONGUEUR DU BATEAU") # if boat is placed outside the
+                                                                        # grid's range, raises this error
 
 
-    def PlaceV(self,init_line,init_col,gridboat1):
+    def PlaceV(self,init_line,init_col,gridboat1):      # Same as PlaceH but places the ship vertically.
 
         if 11-self.lenght >= init_line:
 
             for i in range(self.lenght):
 
                 init_tile = Tile(init_line+i,init_col,gridboat1)
-                init_tile.setvalue("boat")
+                init_tile.SetValue("boat")
 
 
         else:
 
-            print("ERREUR, MAUVAIS ENDROIT POUR LA LONGUEUR DU BATEAU")
+            print("ERREUR, MAUVAIS ENDROIT POUR LA LONGUEUR DU BATEAU") # if boat placed outside allowed
+                                                                        # range, raise and error
 
 #Integrated test
-
-G = Grid()
-Sous_marin = Boat(3)
