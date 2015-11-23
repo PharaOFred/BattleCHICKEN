@@ -1,32 +1,31 @@
-class Grid:
+class Grid:                         #This class is to set the game's grid, which will be 10x10
 
-                   #This class is to set the game's grid, which will be 10x10
-    def __init__(self):     #Constructor operator
 
-        grid = ["water"]*100    #Our grid's -10x10- i.e a list of 100 elements (tiles)
-        self.grid = grid        #"filled" with water.
+    def __init__(self):             #Constructor operator
+
+        grid = ["water"]*100        #Our grid's - 10x10 -  i.e a list of 100 elements (tiles) "filled" with a string "water".
+        self.grid = grid
 
     def __getitem__(self, item):    #Reading operator
 
-        return self.grid[item]  #Returns the item at the selected tile this, it is of my
-                                #concern that this operator should take a tuple for argument
-                                # as in i,j = item, where the argument would be (i,j)
+        return self.grid[item]      #Returns the item at the selected tile this, it is of my
+                                    #concern that this operator should take a tuple for argument
+                                    # as in i,j = item, where the argument would be (i,j)
 
     def __setitem__(self, key, value):  # Writing operator
 
         self.grid[key] = value          #This will set a new string to the targeted position, could be "Aaar, how dare "
-                                        # ye landlubbers hit my ship!" or "Arrr, ye missed ye scallywag!"
+                                        # ye landlubbers hit my ship!" or "Arrr, ye missed ye scallywag!" or "To Davy Jones wit' ye!"
 
 
 
-class Tile:                             #Huuuh this class was supposed to inherit from the Grid class...
-                                        #to be continued...
+class Tile:                             # Class
 
     def __init__(self,m,n,gridtile):    #Constructor for the line position m, the column position n and the grid's tile
 
         self.m = m                      #Line position of "grid"
-        self.n = n                      #column position of "grid"
-        self.gridtile = gridtile        #No idea what's this for.
+        self.n = n                      #Column position of "grid"
+        self.gridtile = gridtile        #This tells to which grid (the opponent's or the player's) belongs to.
 
 
     def getvalue(self):                                 # Returns the value at the coordinate (m,n), because this is a
@@ -36,7 +35,7 @@ class Tile:                             #Huuuh this class was supposed to inheri
                                                         #line 0 instead of line 1 am a bit concerned about the uselessness of
                                                         # __getitem__ in class Grid().
 
-    def SetValue(self,value):                             # Set the a value in the list coordinate (m,n)
+    def setValue(self,value):                           # Set the a value in the list coordinate (m,n)
 
         self.gridtile[(10*(self.m-1))+(self.n-1)] = value
 
@@ -48,7 +47,7 @@ class Boat:                                 #The class to build our ships!
         self.lenght = lenght                # From within a range of 2 to 5 tiles.
 
 
-    def PlaceH(self,init_line,init_col,gridboat1):      #This function calls on the class Tile and it's function
+    def placeH(self,init_line,init_col,gridboat1):      #This function calls on the class Tile and it's function
                                                         # SetValue to set the ship's coordinate on the grid
         if 11-self.lenght >= init_col:                  # horizontally.
 
@@ -63,7 +62,7 @@ class Boat:                                 #The class to build our ships!
                                                                         # grid's range, raises this error
 
 
-    def PlaceV(self,init_line,init_col,gridboat1):      # Same as PlaceH but places the ship vertically.
+    def placeV(self,init_line,init_col,gridboat1):      # Same as placeH but places the ship vertically.
 
         if 11-self.lenght >= init_line:
 
@@ -79,3 +78,6 @@ class Boat:                                 #The class to build our ships!
                                                                         # range, raise and error
 
 #Integrated test
+
+
+Grille = Grid()
