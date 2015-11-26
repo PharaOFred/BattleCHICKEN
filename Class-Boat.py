@@ -81,3 +81,5 @@ class Boat:                                 #The class to build our ships!
 
 
 Grille = Grid()
+
+print (Grille.grid)
